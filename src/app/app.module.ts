@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { CountryService } from './shared/country.service';
+import { RouterState } from '@angular/router';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,6 +17,12 @@ import { CountryService } from './shared/country.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxsModule.forRoot([
+      RouterState,
+      // AppState,
+    ]),
+    NgxsReduxDevtoolsPlugin,
+    NgxsLoggerPluginModule,
   ],
   providers: [CountryService],
   bootstrap: [AppComponent]
